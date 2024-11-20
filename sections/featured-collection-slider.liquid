@@ -6,11 +6,27 @@
 <div class="carousel-ctn page-width" id="{{ section.id }}">
     <h2 class="section-heading roboto-medium">{{ ss.heading }}</h2>
     <div class="carousel">
-        <div class="carousel-cell">1</div>
-        <div class="carousel-cell">2</div>
-        <div class="carousel-cell">3</div>
-        <div class="carousel-cell">4</div>
-        <div class="carousel-cell">5</div>
+        {% assign collection_handle = ss.collection %}
+        {% assign collection = collections[collection_handle] %}
+
+        {% if collection and collection.products.size > 0 %}
+            {% for product in collection.products %}
+                <div class="carousel-cell col-dt-{{ ss.number_slider_desktop }}">
+                    <!-- Product Image -->
+                    <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}" />
+
+                    <!-- Product Title -->
+                    <h3 class="product-title">{{ product.title }}</h3>
+
+                    <!-- Product Price -->
+                    <p class="product-price">
+                        {{ product.price | money }}
+                    </p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No products found in the selected collection.</p>
+        {% endif %}
     </div>
 </div>
 
@@ -48,6 +64,28 @@
         "step": 1,
         "default": 48,
         "unit": "px"
+    },
+    {
+        "type": "header",
+        "content": "Collection"
+    },
+    {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+    },
+    {
+        "type": "header",
+        "content": "Slider`"
+    },
+    {
+        "type": "range",
+        "id": "number_slider_desktop",
+        "label": "Number of Slides (Desktop)",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "default": 4,
     }
   ],
   "blocks": [],
