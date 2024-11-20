@@ -5,7 +5,7 @@
 
 <div class="carousel-ctn page-width" id="{{ section.id }}">
     <h2 class="section-heading roboto-medium">{{ ss.heading }}</h2>
-    <div class="carousel">
+    <flickity-carousel class="carousel">
         {% assign collection_handle = ss.collection %}
         {% assign collection = collections[collection_handle] %}
 
@@ -27,7 +27,7 @@
         {% else %}
             <p>No products found in the selected collection.</p>
         {% endif %}
-    </div>
+    </flickity-carousel>
 </div>
 
 <script src="{{ 'flickity.pkgd.min.js' | asset_url }}" async></script>
