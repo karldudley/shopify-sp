@@ -4,13 +4,24 @@ class FlickityCarousel extends HTMLElement {
         if (typeof Flickity === 'undefined') {
             await this.waitForFlickity();
         }
-        // Initialize Flickity
-        new Flickity(this, {
+        // Get data attributes
+        const autoPlay = this.dataset.autoplay;
+        const autoPlaySpeed = this.dataset.speed;
+        const pauseAutoPlayOnHover = this.dataset.pause;
+        console.log(autoPlay, autoPlaySpeed, pauseAutoPlayOnHover);
+
+        // Set up Flickity options
+        const options = {
             cellAlign: 'left',
             contain: true,
             wrapAround: true,
-            autoPlay: 1000,
-        });
+        };
+        if (autoPlay == 'true') {
+            options.autoPlay = parseInt(autoPlaySpeed) * 1000;
+            options.pauseAutoPlayOnHover = pauseAutoPlayOnHover == 'true';
+        }
+        // Initialize Flickity
+        new Flickity(this, options);
     }
     waitForFlickity() {
         return new Promise((resolve) => {
