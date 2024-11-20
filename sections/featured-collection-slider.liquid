@@ -16,20 +16,24 @@
         {% if collection and collection.products.size > 0 %}
             {% for product in collection.products %}
                 <div class="carousel-cell col-dt-{{ ss.number_slider_desktop }}">
-                    <!-- Product Image -->
-                    <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}" />
+                    <div class="slider-card">
+                        <a href="{{ product.url }}">
+                            <!-- Product Image -->
+                            {{ product.featured_image | image_url: width: 1000 | image_tag: class: 'card-image' }}
 
-                    <!-- Product Title -->
-                    <h3 class="product-title">{{ product.title }}</h3>
+                            <!-- Product Title -->
+                            <h3 class="product-title">{{ product.title }}</h3>
 
-                    <!-- Product Price -->
-                    <p class="product-price">
-                        {{ product.price | money }}
-                    </p>
+                            <!-- Product Price -->
+                            <p class="product-price">
+                                {{ product.price | money }}
+                            </p>
+                        </a>
+                    </div>
                 </div>
             {% endfor %}
         {% else %}
-            <p>No products found in the selected collection.</p>
+            <p>Please select an active collection</p>
         {% endif %}
     </flickity-carousel>
 </div>

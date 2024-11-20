@@ -15,6 +15,7 @@ class FlickityCarousel extends HTMLElement {
             cellAlign: 'left',
             contain: true,
             wrapAround: true,
+            prevNextButtons: false,
         };
         if (autoPlay == 'true') {
             options.autoPlay = parseInt(autoPlaySpeed) * 1000;
@@ -22,6 +23,10 @@ class FlickityCarousel extends HTMLElement {
         }
         // Initialize Flickity
         new Flickity(this, options);
+
+        // Update the height of all cards to match the viewport
+        const height = this.offsetHeight;
+        this.querySelector('.slider-card').style.height = height + 'px';
     }
     waitForFlickity() {
         return new Promise((resolve) => {

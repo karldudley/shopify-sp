@@ -22,9 +22,22 @@
 }
 
 .featured-collection-slider .carousel .carousel-cell {
-    width: 100%;
+    padding: 0px 10px;
 }
 
+.featured-collection-slider .carousel .carousel-cell .slider-card {
+    border: 1px solid red;
+    height: 390px;
+}
+
+.featured-collection-slider .carousel .carousel-cell .slider-card .card-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: contain;
+}
+
+/* Media Queries */
 @media screen and (min-width: 768px) {
     .featured-collection-slider .carousel .carousel-cell {
         width: 50%; /* Show 2 slides on tablets */
