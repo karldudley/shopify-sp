@@ -1,5 +1,7 @@
 # Flickity Carousel for Shopify
 
+![alt text](Images/image.png)
+
 This project integrates a Flickity carousel into a Shopify store, providing a dynamic, customizable slider to showcase products.
 
 ## Features
