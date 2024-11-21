@@ -20,15 +20,24 @@
                         <a href="{{ product.url }}">
                             <!-- Product Image -->
                             {{ product.featured_image | image_url: width: 1000 | image_tag: class: 'card-image' }}
-
-                            <!-- Product Title -->
-                            <h3 class="product-title">{{ product.title }}</h3>
-
-                            <!-- Product Price -->
-                            <p class="product-price">
-                                {{ product.price | money }}
-                            </p>
                         </a>
+
+                        <!-- Product Title -->
+                        <h3 class="product-title">{{ product.title }}</h3>
+
+                        <!-- Product Description -->
+                        <p class="product-price">
+                            {{ product.description }}
+                        </p>
+
+                        <!-- Product Flavour -->
+                        <p class="product-price">
+                            Flavour: {{ product.metafields.global.flavour  }}
+                        </p>
+
+                        <!-- Add to Cart -->
+                        <button class="add-to-cart-btn" data-product-id="{{ product.id }}">Add to Cart</button>
+                        
                     </div>
                 </div>
             {% endfor %}
