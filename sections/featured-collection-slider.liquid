@@ -9,6 +9,7 @@
         data-autoplay="{{ ss.autoplay }}"
         data-speed="{{ ss.autoplay_speed }}"
         data-pause="{{ ss.pause_on_hover }}"
+        data-wrap="{{ ss.wraparound }}"
     >
         {% assign collection_handle = ss.collection %}
         {% assign collection = collections[collection_handle] %}
@@ -130,6 +131,12 @@
         "type": "checkbox",
         "id": "pause_on_hover",
         "label": "Pause on Hover",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "wraparound",
+        "label": "Infinite scroll",
         "default": true
     },
     {

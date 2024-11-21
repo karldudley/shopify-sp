@@ -8,18 +8,24 @@ class FlickityCarousel extends HTMLElement {
         const autoPlay = this.dataset.autoplay;
         const autoPlaySpeed = this.dataset.speed;
         const pauseAutoPlayOnHover = this.dataset.pause;
+        const wrapAround = this.dataset.wrap;
+        console.log(wrapAround);
 
         // Set up Flickity options
         const options = {
             cellAlign: 'left',
             contain: true,
-            wrapAround: true,
             prevNextButtons: false,
         };
         if (autoPlay == 'true') {
             options.autoPlay = parseInt(autoPlaySpeed) * 1000;
             options.pauseAutoPlayOnHover = pauseAutoPlayOnHover == 'true';
         }
+        if (wrapAround == 'true') {
+            options.wrapAround = true;
+        }
+        console.log(options);
+
         // Initialize Flickity
         new Flickity(this, options);
     }
