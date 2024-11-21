@@ -13,6 +13,10 @@ This project integrates a Flickity carousel into a Shopify store, providing a dy
     -   Real-time cart updates.
     -   Toast notifications for successful additions.
 
+## Customiser Options
+
+![alt text](Images/customiser.png)
+
 ## Installation
 
 1. **Add Flickity Library**
