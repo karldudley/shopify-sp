@@ -26,9 +26,14 @@
 }
 
 .featured-collection-slider .carousel .carousel-cell .slider-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 15px 18px 18px 18px;
+    color: #000;
 }
 
 .featured-collection-slider .carousel .carousel-cell .slider-card .card-image {
@@ -40,8 +45,71 @@
     border-radius: 20px;
 }
 
+.featured-collection-slider
+    .carousel
+    .carousel-cell
+    .slider-card
+    .product-title {
+    font-size: 24px;
+    margin: 0;
+}
+
+.featured-collection-slider
+    .carousel
+    .carousel-cell
+    .slider-card
+    .product-description {
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0;
+    padding-bottom: 15px;
+}
+
+.featured-collection-slider
+    .carousel
+    .carousel-cell
+    .slider-card
+    .product-flavour {
+    font-size: 12px;
+    margin: 0;
+}
+
+.featured-collection-slider
+    .carousel
+    .carousel-cell
+    .slider-card
+    .add-to-cart-btn {
+    display: block;
+    width: 100%;
+    background-color: #8ff695;
+    text-align: center;
+    padding: 12px 0;
+    border: none;
+    border-radius: 0 0 10px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.featured-collection-slider
+    .carousel
+    .carousel-cell
+    .slider-card
+    .add-to-cart-btn:hover {
+    background-color: #7de485;
+    transform: translateY(-2px);
+}
+
+.featured-collection-slider
+    .carousel
+    .carousel-cell
+    .slider-card
+    .add-to-cart-btn:active {
+    background-color: #6ed675;
+    transform: translateY(0);
+}
+
 /* Toast Container */
-.toast-container {
+.featured-collection-slider .toast-container {
     position: fixed;
     bottom: 20px;
     right: 20px;

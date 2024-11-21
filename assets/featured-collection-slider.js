@@ -22,13 +22,6 @@ class FlickityCarousel extends HTMLElement {
         }
         // Initialize Flickity
         new Flickity(this, options);
-
-        // Update the height of all cards to match the viewport
-        const height = this.offsetHeight;
-        const cards = this.querySelectorAll('.slider-card');
-        cards.forEach((card) => {
-            card.style.height = height + 'px';
-        });
     }
     waitForFlickity() {
         return new Promise((resolve) => {

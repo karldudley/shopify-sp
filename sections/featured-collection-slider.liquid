@@ -23,20 +23,20 @@
                         </a>
 
                         <!-- Product Title -->
-                        <h3 class="product-title">{{ product.title }}</h3>
+                        <h3 class="product-title montserrat-medium">{{ product.title }}</h3>
 
                         <!-- Product Description -->
-                        <p class="product-price">
-                            {{ product.description }}
+                        <p class="product-description roboto-light">
+                            {{ product.description | strip_html }}
                         </p>
 
                         <!-- Product Flavour -->
-                        <p class="product-price">
+                        <p class="product-flavour roboto-medium">
                             Flavour: {{ product.metafields.global.flavour  }}
                         </p>
 
                         <!-- Add to Cart -->
-                        <button class="add-to-cart-btn" data-variant-id="{{ product.selected_or_first_available_variant.id }}">Add to Cart</button>
+                        <button class="add-to-cart-btn roboto-medium" data-variant-id="{{ product.selected_or_first_available_variant.id }}">Add to Cart</button>
                         
                     </div>
                 </div>
