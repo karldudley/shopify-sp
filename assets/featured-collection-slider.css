@@ -40,6 +40,35 @@
     border-radius: 20px;
 }
 
+/* Toast Container */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Toast Message */
+.toast {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Toast Visible State */
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Media Queries */
 @media screen and (min-width: 768px) {
     .featured-collection-slider .carousel .carousel-cell {

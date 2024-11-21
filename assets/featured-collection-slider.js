@@ -46,9 +46,10 @@ class FlickityCarousel extends HTMLElement {
 customElements.define('flickity-carousel', FlickityCarousel);
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Find all Add to Cart buttons
+    // Find elements
     const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
     const cartCountElement = document.querySelector('.cart-count-bubble span');
+    const toastContainer = document.getElementById('toast-container');
 
     addToCartButtons.forEach((button) => {
         button.addEventListener('click', function (e) {
@@ -73,11 +74,12 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .then((response) => response.json())
             .then((data) => {
-                alert('Product added to cart!');
                 updateCartIcon();
+                showToast('Product added to cart!');
             })
             .catch((error) => {
                 console.error('Error adding to cart:', error);
+                showToast('Failed to add product to cart.', true);
             });
     }
 
@@ -97,5 +99,24 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch((error) => {
                 console.error('Error updating cart icon:', error);
             });
+    }
+
+    function showToast(message, isError = false) {
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        if (isError) {
+            toast.style.backgroundColor = '#d9534f'; // Red for errors
+        }
+        toast.textContent = message;
+        toastContainer.appendChild(toast);
+
+        // Trigger the animation
+        setTimeout(() => toast.classList.add('show'), 10);
+
+        // Remove the toast after 3 seconds
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300); // Allow animation to finish
+        }, 3000);
     }
 });
