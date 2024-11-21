@@ -59,8 +59,8 @@
         "autoplay_speed": 3,
         "pause_on_hover": true,
         "wraparound": true,
-        "margin_top": 40,
-        "margin_bottom": 0
+        "margin_top": 60,
+        "margin_bottom": 60
       }
     }
   },
