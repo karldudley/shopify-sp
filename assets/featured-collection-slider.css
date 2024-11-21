@@ -22,7 +22,7 @@
 }
 
 .featured-collection-slider .carousel .carousel-cell {
-    padding: 0px 10px;
+    padding: 0px 5px;
 }
 
 .featured-collection-slider .carousel .carousel-cell .slider-card {
@@ -34,6 +34,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 15px 18px 18px 18px;
     color: #000;
+    margin: 5px;
 }
 
 .featured-collection-slider .carousel .carousel-cell .slider-card .card-image {
@@ -106,6 +107,21 @@
     .add-to-cart-btn:active {
     background-color: #6ed675;
     transform: translateY(0);
+}
+
+/* Bullets */
+.flickity-page-dots .dot {
+    background-color: #ebebeb;
+    width: 14px;
+    height: 14px;
+    margin: 0 3.5px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+/* Active state */
+.flickity-page-dots .dot.is-selected {
+    background-color: #8ff695;
 }
 
 /* Toast Container */

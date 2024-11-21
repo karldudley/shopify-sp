@@ -55,6 +55,10 @@
     #{{ section.id }} > .section-heading {
         font-size: {{  ss.heading_size }}px;
     }
+    #{{ section.id }} {
+        margin-top:{{ ss.margin_top }}px;
+        margin-bottom:{{ ss.margin_bottom }}px;
+    }
 {% endstyle %}
 
 {% schema %}
@@ -127,9 +131,32 @@
         "id": "pause_on_hover",
         "label": "Pause on Hover",
         "default": true
+    },
+    {
+        "type": "header",
+        "content": "Margin"
+    },
+    {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "unit": "px",
+        "label": "Margin top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "unit": "px",
+        "label": "Margin bottom",
+        "default": 0
     }
   ],
-  "blocks": [],
   "presets": [
     {
       "name": "Featured Collection Slider"
