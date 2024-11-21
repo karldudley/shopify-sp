@@ -8,7 +8,6 @@ class FlickityCarousel extends HTMLElement {
         const autoPlay = this.dataset.autoplay;
         const autoPlaySpeed = this.dataset.speed;
         const pauseAutoPlayOnHover = this.dataset.pause;
-        console.log(autoPlay, autoPlaySpeed, pauseAutoPlayOnHover);
 
         // Set up Flickity options
         const options = {
@@ -49,27 +48,23 @@ customElements.define('flickity-carousel', FlickityCarousel);
 document.addEventListener('DOMContentLoaded', function () {
     // Find all Add to Cart buttons
     const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+    const cartCountElement = document.querySelector('.cart-count-bubble span');
 
     addToCartButtons.forEach((button) => {
         button.addEventListener('click', function (e) {
-            // Get the product ID from the data attribute
-            const productId = this.getAttribute('data-product-id');
-            addToCart(productId);
+            const variantId = this.getAttribute('data-variant-id');
+            addToCart(variantId);
         });
     });
 
-    function addToCart(productId) {
+    function addToCart(variantId) {
         const quantity = 1;
         const data = {
-            items: [
-                {
-                    id: productId,
-                    quantity: quantity,
-                },
-            ],
+            id: variantId,
+            quantity: quantity,
         };
 
-        fetch('/cart/add.js', {
+        fetch(`${window.Shopify.routes.root}cart/add.js`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -79,18 +74,28 @@ document.addEventListener('DOMContentLoaded', function () {
             .then((response) => response.json())
             .then((data) => {
                 alert('Product added to cart!');
-                updateCart();
+                updateCartIcon();
             })
             .catch((error) => {
                 console.error('Error adding to cart:', error);
             });
     }
 
-    function updateCart() {
+    function updateCartIcon() {
         fetch('/cart.js')
-            .then((response) => response.json())
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then((cart) => {
-                console.log(cart);
+                if (cartCountElement) {
+                    cartCountElement.textContent = cart.item_count; // Update cart count
+                }
+            })
+            .catch((error) => {
+                console.error('Error updating cart icon:', error);
             });
     }
 });
